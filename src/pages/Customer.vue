@@ -23,8 +23,8 @@
                         <td>
                             <button @click="deleteCustomer(customer)">delete</button>
                         </td>
-                        <!--<td><router-link :to="{ path: '/customers/', params: { id: customer.id }}" >to the page</router-link> </td>-->
-                        <td><router-link :to="'/customers/' + customer.id" >to the page</router-link> </td>
+                        <td><router-link :to="{ name: 'customers', params: { id: customer.id }}" >to the page</router-link> </td>
+                        <!--<td><router-link :to="'/customers/' + customer.id" >to the page</router-link> </td>-->
                     </tr>
 
                     </tbody>
