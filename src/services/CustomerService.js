@@ -26,6 +26,7 @@ const customers = [
 
 ]
 
+let nextId = 5
 
 
 
@@ -49,7 +50,13 @@ export default class CustomerService {
 
     addcustomer(value){
 
+        value.id = nextId
+
+        // console.log(customers.length)
+        // console.log(value)
+
         customers.push(value)
+        nextId++
 
     }
 

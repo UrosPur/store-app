@@ -9,6 +9,7 @@
                     <thead>
                     <th>Custome first name</th>
                     <th>Customer last Name</th>
+                    <th>Email</th>
                     <th>action</th>
 
                     </thead>
@@ -17,6 +18,7 @@
                     <tr v-for="(customer,key) in customers" :key="customer.id">
                         <td>{{ customer.firstName}}</td>
                         <td>{{ customer.lastName}}</td>
+                        <td>{{ customer.email}}</td>
                         <td>
                             <button @click="deleteCustomer(customer)">delete</button>
                         </td>
@@ -80,6 +82,7 @@
 
                 newCustomer: {
 
+                    id: '',
                     firstName: '',
                     lastName: '',
                     email: '',
@@ -99,7 +102,10 @@
 
             addcustomer(){
 
+                // console.log(this.newCustomer)
                     customerService.addcustomer(this.newCustomer)
+
+               this.newCustomer = {}
 
             }
 
