@@ -60,6 +60,11 @@ export default class CustomerService {
 
     }
 
+    get(id) {
+        return customers.find(customer => customer.id == id)
+
+    }
+
 }
 
 

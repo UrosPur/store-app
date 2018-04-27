@@ -3,7 +3,7 @@
         <div class="row">
 
 
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <h1>customer list</h1>
                 <table>
                     <thead>
@@ -11,6 +11,7 @@
                     <th>Customer last Name</th>
                     <th>Email</th>
                     <th>action</th>
+                    <th>Latest Purchases</th>
 
                     </thead>
 
@@ -22,6 +23,8 @@
                         <td>
                             <button @click="deleteCustomer(customer)">delete</button>
                         </td>
+                        <!--<td><router-link :to="{ path: '/customers/', params: { id: customer.id }}" >to the page</router-link> </td>-->
+                        <td><router-link :to="'/customers/' + customer.id" >to the page</router-link> </td>
                     </tr>
 
                     </tbody>
@@ -29,7 +32,7 @@
 
 
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <h2>Add customer </h2>
                 <form  @submit.prevent="addcustomer">
 
