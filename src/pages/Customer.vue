@@ -1,45 +1,73 @@
 <template>
-    <div>
-<h1>customer list</h1>
-
-        <table>
-            <thead>
-            <th>Custome first name</th>
-            <th>Customer last Name</th>
-            <th>action</th>
-
-            </thead>
-
-            <tbody>
-            <tr v-for="(customer,key) in customers" :key="customer.id">
-                <td>{{ customer.firstName}}</td>
-                <td>{{ customer.lastName}}</td>
-                <td><button @click="deleteCustomer(customer)">delete</button></td>
-            </tr>
-
-            </tbody>
+    <div class="container">
+        <div class="row">
 
 
-        </table>
+            <div class="col-sm-6">
+                <h1>customer list</h1>
+                <table>
+                    <thead>
+                    <th>Custome first name</th>
+                    <th>Customer last Name</th>
+                    <th>action</th>
+
+                    </thead>
+
+                    <tbody>
+                    <tr v-for="(customer,key) in customers" :key="customer.id">
+                        <td>{{ customer.firstName}}</td>
+                        <td>{{ customer.lastName}}</td>
+                        <td>
+                            <button @click="deleteCustomer(customer)">delete</button>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
 
 
-        <!--<ul>-->
-            <!--<li v-for="(customer,key) in customers" :key="customer.id">-->
-                <!--{{ customer.firstName}}-->
-                <!--{{ customer.lastName}}-->
-            <!--</li>-->
+            </div>
+            <div class="col-sm-6">
+                <h2>Add customer </h2>
+                <form  @submit.prevent="addcustomer">
 
-        <!--</ul>-->
+                    <div class="col-sm-6">
+                        <label>First Name</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input v-model="newCustomer.firstName" type="text"/>
+                    </div>
 
+                    <div class="col-sm-6">
+                        <label>Last Name</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input v-model="newCustomer.lastName" type="text"/>
+                    </div>
 
+                    <div class="col-sm-6">
+                        <label>Email</label>
+                    </div>
 
+                    <div class="col-sm-6">
+                        <input v-model="newCustomer.email" type="email"/>
+                    </div>
+
+                    <div class="col-sm-6">
+                    <button>add customer</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
     </div>
-    
+
 </template>
 
 <script>
 
-    import { customerService } from '../services/CustomerService';
+    import {customerService} from '../services/CustomerService';
 
     export default {
         name: "Customer",
@@ -48,11 +76,16 @@
 
             return {
 
-                customers: customerService.list()
+                customers: customerService.list(),
 
+                newCustomer: {
+
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                }
 
             }
-
 
         },
 
@@ -60,21 +93,17 @@
 
             deleteCustomer(customer) {
 
-              customerService.removeCustomer(customer)
-
+                customerService.removeCustomer(customer)
 
             },
 
+            addcustomer(){
+
+                    customerService.addcustomer(this.newCustomer)
+
+            }
 
         }
 
-        // created(){
-        //
-        //     console.log(customerService.list())
-        // }
     }
 </script>
-
-<style scoped>
-
-</style>

@@ -26,6 +26,11 @@ const customers = [
 
 ]
 
+
+
+
+
+
 export default class CustomerService {
 
     list(){
@@ -40,6 +45,14 @@ export default class CustomerService {
 
 
     }
+
+
+    addcustomer(value){
+
+        customers.push(value)
+
+    }
+
 }
 
 
